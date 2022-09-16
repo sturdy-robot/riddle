@@ -425,7 +425,6 @@ impl InputMainThreadState {
 	/// This may produce InputEvents which can be consumed via [`ext::InputSystemExt::take_input_events`].
 	pub fn process_input(&mut self) {
 		while let Some(gilrs::Event { event, id, .. }) = self.gilrs.next_event() {
-			use std::convert::TryFrom;
 			match event {
 				gilrs::EventType::ButtonPressed(button, _) => {
 					if let Ok(button) = GamePadButton::try_from(button) {
